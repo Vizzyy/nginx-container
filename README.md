@@ -17,7 +17,5 @@ docker run -it --rm -p 443:443 -p 80:80 --name certbot \
 -v "$(pwd)/letsencrypt_conf:/etc/letsencrypt" \
 -v "$(pwd)/letsencrypt_work:/var/lib/letsencrypt" \
 -v "$(pwd)/letsencrypt_logs:/var/log/letsencrypt" \
-letcrypt-certbot:latest certonly \
---no-self-upgrade --standalone \
--d www.example.com -d example.com
+letcrypt-certbot:latest certonly --standalone
 ```
