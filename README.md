@@ -43,6 +43,7 @@ docker build -t nginx-container:latest .
 HOST_NAME=example.com
 HOST_PORT=443
 docker run --rm -p 443:443 -p 80:80 \
+-v ../pki:/pki
 -e HOST_NAME=$HOST_NAME -e HOST_PORT=$HOST_PORT \
 --name nginx-container nginx-container:latest
 ```
