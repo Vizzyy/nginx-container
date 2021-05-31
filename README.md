@@ -38,12 +38,14 @@ sudo chmod 600 ../pki/host/*.pem;
 
 
 ```bash
+cd nginx
+
 docker build -t nginx-container:latest . 
 
 HOST_NAME=example.com
 HOST_PORT=443
 PROXY_HOST=example2.com
-docker run --rm -p 443:443 \
+docker run --rm -d -p 443:443 \
 -v /home/$(whoami)/nginx-container/pki:/pki \
 -e HOST_NAME=$HOST_NAME \
 -e HOST_PORT=$HOST_PORT \
