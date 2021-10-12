@@ -7,6 +7,7 @@ RUN apt update && apt -y install webmin
 RUN nginx -V
 RUN apt install -y gcc
 RUN apt install -y make
+RUN apt install -y git
 
 # Install Maxmind db library
 ENV MAXMIND_VERSION=1.2.1
