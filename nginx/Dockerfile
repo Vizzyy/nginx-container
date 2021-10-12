@@ -30,7 +30,7 @@ RUN set -x \
 #        NGINX_OPTIONS=$(2>&1 nginx -V | grep 'configure arguments' | awk -F: '{print $2}') \
 RUN set -x \
   && git clone https://github.com/leev/ngx_http_geoip2_module \
-  && echo "deb-src http://nginx.org/packages/mainline/debian/ stretch nginx" >> /etc/apt/sources.list \
+  && echo "deb-src http://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list \
   && DEBIAN_FRONTEND=noninteractive apt-get update \
   && apt-get source nginx=${NGINX_VERSION} \
   && cd nginx-1.13.11 \
