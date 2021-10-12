@@ -5,6 +5,7 @@ RUN apt update && apt install -y software-properties-common apt-transport-https 
     && add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
 RUN apt update && apt -y install webmin
 RUN nginx -V
+RUN apt install -y gcc
 
 # Install Maxmind db library
 ENV MAXMIND_VERSION=1.2.1
