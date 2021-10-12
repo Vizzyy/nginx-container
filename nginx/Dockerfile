@@ -22,7 +22,7 @@ RUN set -x \
   && make install \
   && ldconfig
 
-RUN apt install -y libssl-dev ca-certificates build-essential zlib1g-dev unzip
+RUN apt install -y libssl-dev ca-certificates build-essential zlib1g-dev unzip libpcre3-dev
 
 # Install nginx extension for GeoIP2. See: https://github.com/leev/ngx_http_geoip2_module
 # We have to recompile nginx. To keep things simple we use the deb file + the same compile options as before.
