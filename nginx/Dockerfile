@@ -52,11 +52,9 @@ RUN apt install -y geoip-database libgeoip1
 # This example uses the free version from https://dev.maxmind.com/geoip/geoip2/geolite2/
 #
 # We only use the country db, you can add the city db and others if you want them.
-RUN set -x && mkdir -p /usr/share/GeoIP/ \
-  && wget -O /usr/share/GeoIP/GeoIP.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz \
-  && gunzip /usr/share/GeoIP/GeoIP.dat.gz \
-  && ls -al /usr/share/GeoIP/
-
+RUN set -x && mkdir -p /usr/share/GeoIP/
+COPY GeoLite2-Country_20211005.tar.gz /usr/share/GeoIP
+RUN gunzip /usr/share/GeoIP/GeoLite2-Country_20211005.tar.gz && ls -al /usr/share/GeoIP
 
 ENV TZ America/New_York
 COPY nginx.conf /nginx.conf
