@@ -8,6 +8,7 @@ RUN nginx -V
 RUN apt install -y gcc
 RUN apt install -y make
 RUN apt install -y git
+RUN apt install -y dpkg-dev
 
 # Install Maxmind db library
 ENV MAXMIND_VERSION=1.2.1
