@@ -4,7 +4,7 @@ RUN apt update && apt install -y software-properties-common apt-transport-https 
     && wget -q http://www.webmin.com/jcameron-key.asc -O- | apt-key add - \
     && add-apt-repository "deb [arch=amd64] http://download.webmin.com/download/repository sarge contrib"
 RUN apt update \
-    && apt -y install webmin geoip-database libgeoip1 \
+    && apt -y install webmin geoip-database libgeoip1 
 RUN nginx -V
 
 ENV TZ America/New_York
