@@ -46,14 +46,16 @@ RUN set -x \
     build-essential \
     dpkg-dev
 
+RUN apt install -y geoip-database libgeoip1
+
 # Download Maxmind db version 2
 # This example uses the free version from https://dev.maxmind.com/geoip/geoip2/geolite2/
 #
 # We only use the country db, you can add the city db and others if you want them.
-RUN set -x && mkdir -p /usr/share/geoip \
-  && wget -O /tmp/country.tar.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz \
-  && tar xf /tmp/country.tar.gz -C /usr/share/geoip --strip 1 \
-  && ls -al /usr/share/geoip/
+RUN set -x && mkdir -p /usr/share/GeoIP/ \
+  && wget -O /usr/share/GeoIP/GeoIP.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz \
+  && gunzip /usr/share/GeoIP/GeoIP.dat.gz \
+  && ls -al /usr/share/GeoIP/
 
 
 ENV TZ America/New_York
