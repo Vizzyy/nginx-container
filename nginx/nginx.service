@@ -1,0 +1,21 @@
+[Unit]
+Description=Nginx Container
+
+[Service]
+WorkingDirectory=/home/ec2-user/nginx-container
+ExecStartPre=-/usr/bin/docker rmi -f $(/usr/bin/docker images -a -q)
+ExecStartPre=-/usr/bin/docker rm nginx-container
+ExecStartPre=/usr/bin/docker build --no-cache -t nginx-container:latest ./nginx
+ExecStart=/usr/bin/docker run --rm -p 443:443 \
+-v /home/ec2-user/nginx-container/pki:/pki \
+-e HOST_NAME=vizzyy.com \
+-e HOST_PORT=443 \
+-e PROXY_HOST=vizzyy.ddns.net \
+--name nginx-container nginx-container:latest
+User=ec2-user
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
